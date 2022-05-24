@@ -2,7 +2,6 @@ const fs = require('fs/promises');
 const path = require('path');
 const main = path.join(__dirname, 'files')
 const copy = path.join(__dirname, 'files-copy')
-
 async function copyDir(main, copy){
   await fs.mkdir(copy, {recursive: true})
   const readCopy = await fs.readdir(copy)
@@ -10,7 +9,6 @@ async function copyDir(main, copy){
     fs.access(path.join(main, e)).catch(() => {
       fs.rm(path.join(copy, e), {recursive: true})
     })
-    
   })
   const readMain = await fs.readdir(main, {withFileTypes: true})
   readMain.forEach(async e => {
@@ -22,5 +20,4 @@ async function copyDir(main, copy){
     }
   })
 }
-
 copyDir(main, copy)

@@ -3,10 +3,8 @@ const path = require('node:path');
 const readline = require('node:readline');
 const {stdin, stdout} = require('node:process');
 const currPath = path.join(__dirname, 'text.txt');
-
 const stream = fs.createWriteStream(currPath);
 const rl = readline.createInterface({input: stdin, output: stdout});
-
 rl.on('SIGINT', () => {
   console.log('Файл text.txt создан!');
   rl.close();
